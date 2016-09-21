@@ -23,7 +23,7 @@ function divisibleBy5(num){
 	return function(){
 		return (num%5 === 0);	
 	};
-	
+		
 }
 
 var num = 15;
