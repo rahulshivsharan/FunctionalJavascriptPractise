@@ -37,3 +37,16 @@ console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
 
 array_numbers = [10,10,40,30];
 console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
+
+var greet = function(fn){
+	return function (message){
+		return fn.call(null,message);
+	}
+}
+
+var msgByJohn = greet(function(){
+	return "John says \""+arguments[0]+"\"";
+});
+
+console.log(msgByJohn("How are you ?"));
+console.log(msgByJohn("I will be comming late today"));
