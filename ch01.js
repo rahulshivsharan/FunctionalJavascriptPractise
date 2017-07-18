@@ -80,4 +80,36 @@ var parseAge = function(age){
 	return a;
 }
 
-console.log(parseAge("advs"));
+//console.log(parseAge("advs"));
+
+
+function fail(msg){
+	throw new Error(msg);
+}
+
+function warn(msg){
+	console.log(["WARNING:",msg].join(" "));
+}
+
+function note(msg){
+	console.log(["NOTE:",msg].join(" "));
+}
+
+var parseAge = function(age){
+	if(!_.isString(age)){
+		fail("The age is not String value");
+	}
+
+	note("Attempting to parse age");
+	var a = parseInt(age,10);
+
+	if(_.isNaN(a)){
+		warn(["Could not parse Age:",age].join(" "));
+		a = 0;
+	}
+
+	return a;
+}
+
+parseAge("12");
+parseAge(12);
