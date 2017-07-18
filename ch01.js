@@ -64,3 +64,20 @@ var cal = unspat(function(myArray){
 
 
 console.log(cal(1,45,7));
+
+var parseAge = function(age){
+	if(!_.isString(age)){
+		throw new  Error("The age is not String value");
+	}
+
+	var a = parseInt(age,10);
+
+	if(_.isNaN(a)){
+		console.log(["Could not parse Age:",age].join(" "));
+		a = 0;
+	}
+
+	return a;
+}
+
+console.log(parseAge("advs"));
