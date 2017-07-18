@@ -50,3 +50,17 @@ var msgByJohn = greet(function(){
 
 console.log(msgByJohn("How are you ?"));
 console.log(msgByJohn("I will be comming late today"));
+
+
+function unspat(fn){
+	return function(){
+		return fn.call(null,_.toArray(arguments));
+	}
+}
+
+var cal = unspat(function(myArray){
+	return myArray.join(" ; ");
+});
+
+
+console.log(cal(1,45,7));
