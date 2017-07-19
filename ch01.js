@@ -111,5 +111,21 @@ var parseAge = function(age){
 	return a;
 }
 
-parseAge("12");
-parseAge(12);
+//parseAge("12");
+//parseAge(12);
+
+
+function fail(msg){
+	throw new Error(msg);
+}
+
+function naiveNth(index,array){
+	if(index >= array.length){
+		fail(" Index position is not valid ");
+		return null;
+	}	
+	return array[index];
+}
+
+console.log(naiveNth(1,["A","B","C"]));
+console.log(naiveNth(12,["A","B","C"]));
