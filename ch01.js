@@ -157,5 +157,57 @@ function nth(obj,index){
 }
 
 
-console.log(nth([12,34,56],2)+"  "+nth("Rahul",3));
-console.log(nth({},2)+"  "+nth(null,3));
+//console.log(nth([12,34,56],2)+"  "+nth("Rahul",3));
+//console.log(nth({},2)+"  "+nth(null,3));
+
+function second(obj){
+	var nth = function(obj,index){
+
+		var fail = function(msg){
+			throw new Error(msg);
+		}
+
+		var isIndexed = function(obj){
+			return _.isArray(obj) || _.isString(obj);
+		}
+
+		if(!_.isNumber(index)) fail("Expected number as an index");
+		if(!isIndexed(obj)) fail("Not supported for non-indexed data-type");
+
+		if(index < 0 || (index > obj.length - 1)) 
+			fail("Index out of bound exception");
+
+		return obj[index];
+	} // end of nth
+
+	return nth(obj,1);	
+}
+
+//console.log(second([12,34,56])+"  "+second("Rahul"));
+
+var fn01 = function(){
+	var myArray = [12,45,67,1,4,2],
+		copyOfMyArray = [];
+	console.log(" ",myArray," ",myArray.sort());
+
+	var compareLessThanOrEqual = function(numX,numY){
+		if(numX < numY) return -1;
+		if(numX > numY) return 1;
+		return 0;
+	};
+	
+	copyOfMyArray = myArray.slice();
+	console.log(" ",myArray," ",copyOfMyArray.sort(compareLessThanOrEqual));
+
+	var greaterThanEqual = function(numX,numY){
+		return numX >= numY;
+	}
+		
+	copyOfMyArray = myArray.slice();
+	console.log(" ",myArray," ",copyOfMyArray.sort(greaterThanEqual));
+
+	myArray = [12,45,-1,34,-103,56];
+	copyOfMyArray = myArray.slice();
+	console.log(" ",myArray," ",copyOfMyArray.sort(greaterThanEqual));	
+}
+fn01();
