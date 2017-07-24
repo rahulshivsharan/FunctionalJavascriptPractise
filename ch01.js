@@ -135,4 +135,27 @@ function isIndexed(obj){
 	return _.isArray(obj) || _.isString(obj);
 }
 
-console.log(" is Indexed ",isIndexed([12,45])," is Indexd ",isIndexed("Rahul"));
+//console.log(" is Indexed ",isIndexed([12,45])," is Indexd ",isIndexed("Rahul"));
+
+function nth(obj,index){
+
+	var fail = function(msg){
+		throw new Error(msg);
+	}
+
+	var isIndexed = function(obj){
+		return _.isArray(obj) || _.isString(obj);
+	}
+
+	if(!_.isNumber(index)) fail("Expected number as an index");
+	if(!isIndexed(obj)) fail("Not supported for non-indexed data-type");
+
+	if(index < 0 || (index > obj.length - 1)) 
+		fail("Index out of bound exception");
+
+	return obj[index];
+}
+
+
+console.log(nth([12,34,56],2)+"  "+nth("Rahul",3));
+console.log(nth({},2)+"  "+nth(null,3));
