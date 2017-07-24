@@ -33,10 +33,10 @@ var addAllNumbers = spat(function(){
 });
 
 var array_numbers = [20,30,40];
-console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
+//console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
 
 array_numbers = [10,10,40,30];
-console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
+//console.log(" Total of ",array_numbers," is ",addAllNumbers(array_numbers));
 
 var greet = function(fn){
 	return function (message){
@@ -48,8 +48,8 @@ var msgByJohn = greet(function(){
 	return "John says \""+arguments[0]+"\"";
 });
 
-console.log(msgByJohn("How are you ?"));
-console.log(msgByJohn("I will be comming late today"));
+//console.log(msgByJohn("How are you ?"));
+//console.log(msgByJohn("I will be comming late today"));
 
 
 function unspat(fn){
@@ -63,7 +63,7 @@ var cal = unspat(function(myArray){
 });
 
 
-console.log(cal(1,45,7));
+//console.log(cal(1,45,7));
 
 var parseAge = function(age){
 	if(!_.isString(age)){
@@ -127,5 +127,12 @@ function naiveNth(index,array){
 	return array[index];
 }
 
-console.log(naiveNth(1,["A","B","C"]));
-console.log(naiveNth(12,["A","B","C"]));
+//console.log(naiveNth(1,["A","B","C"]));
+//console.log(naiveNth(12,["A","B","C"]));
+
+
+function isIndexed(obj){
+	return _.isArray(obj) || _.isString(obj);
+}
+
+console.log(" is Indexed ",isIndexed([12,45])," is Indexd ",isIndexed("Rahul"));
