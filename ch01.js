@@ -210,4 +210,47 @@ var fn01 = function(){
 	copyOfMyArray = myArray.slice();
 	console.log(" ",myArray," ",copyOfMyArray.sort(greaterThanEqual));	
 }
-fn01();
+//fn01();
+
+
+var fn02 = function(){
+	
+	var lameCSV = function(str){
+		return _.reduce(str.split("\n"),function(table,row){
+
+			table.push(_.map(row.split(","),function(val){
+				return val.trim();
+			}));
+
+			return table;
+		},[]);
+	}// end of lameCSV
+
+	console.log(lameCSV("name,age\nRahul,23\nVipul,34\nMukesh,23"));
+}
+//fn02();
+
+var fn03 = function(){
+	
+	var lameCSV = function(str){
+		var tbl = _.reduce(str.split("\n"),function(table,row){
+
+			table.push(_.map(row.split(","),function(val){
+				return val.trim();
+			}));
+
+
+			return table;
+		},[]);
+
+		return _.rest(tbl);
+	}// end of lameCSV
+
+	var csvString = "name,age,salary\n" +
+					"Rahul,23,'34,000'\n" +
+					"Vipul,34,'23,000'\n" +
+					"Mukesh,23,'56,000'";
+
+	console.log(lameCSV(csvString));
+}
+fn03();
