@@ -307,4 +307,30 @@ var fn04 = function(){
 	console.log(" Get Salary ",obj.getSalary());
 	console.log(" Merge Names + Ages ",obj.mergeResults(obj.getNames(),obj.getAges()));
 }
-fn04();
+//fn04();
+
+var fn05 = function(){
+	var existy = function(x){
+		return x != null;
+	}
+	console.log(" null ",existy(null));
+	console.log(" undefined ",existy(undefined));
+	console.log(" true ",existy(true));
+	console.log(" false ",existy(false));
+	console.log(" {} ",existy({}));
+	console.log(" 0 ",existy(0));
+	console.log(" 1 ",existy(1));
+
+	var truthy = function(x){
+		return (x !== false) && existy(x)
+	}
+
+	console.log(" null ",truthy(null));
+	console.log(" undefined ",truthy(undefined));
+	console.log(" true ",truthy(true));
+	console.log(" false ",truthy(false));
+	console.log(" {} ",truthy({}));
+	console.log(" 0 ",truthy(0));
+	console.log(" 1 ",truthy(1));
+} 
+fn05();
