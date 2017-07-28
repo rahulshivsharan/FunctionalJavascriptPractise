@@ -253,4 +253,58 @@ var fn03 = function(){
 
 	console.log(lameCSV(csvString));
 }
-fn03();
+//fn03();
+
+var fn04 = function(){
+	
+	var lameCSV = function(str){
+		var tbl = _.reduce(str.split("\n"),function(table,row){
+
+			table.push(_.map(row.split(","),function(val){
+				return val.trim();
+			}));
+
+
+			return table;
+		},[]);
+
+		return _.rest(tbl);
+	}// end of lameCSV
+
+	var csvString = "name,age,salary\n" +
+					"Rahul,23,34000\n" +
+					"Vipul,34,23000\n" +
+					"Mukesh,23,56000";
+
+	var arrayContent = lameCSV(csvString);
+
+	var obj = {
+		getNames : function(){
+			return _.map(arrayContent,function(value){
+				return _.first(value);
+			});
+		},
+		getAges : function(){
+
+			var second = function(arr){
+				return arr[1];
+			}
+
+			return _.map(arrayContent,second);
+		},
+		getSalary : function(){
+			return _.map(arrayContent,function(value){
+				console.log(value);
+				return _.last(value);
+			});
+		},
+		mergeResults : _.zip
+		
+	}; // end of obj				
+
+	console.log(" Get Names ",obj.getNames());
+	console.log(" Get Ages ",obj.getAges());
+	console.log(" Get Salary ",obj.getSalary());
+	console.log(" Merge Names + Ages ",obj.mergeResults(obj.getNames(),obj.getAges()));
+}
+fn04();
