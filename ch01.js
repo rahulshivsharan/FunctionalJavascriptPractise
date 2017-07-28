@@ -333,4 +333,46 @@ var fn05 = function(){
 	console.log(" 0 ",truthy(0));
 	console.log(" 1 ",truthy(1));
 } 
-fn05();
+//fn05();
+
+var fn06 = function(){
+	var existy = function(x){
+		return (x != null);
+	}
+
+	var truthy = function(x){
+		return (x != false) && existy(x);
+	}
+
+	var doWhen = function(condition,action){
+		if(truthy(condition)){
+			return action();
+		}else{
+			return undefined;
+		}
+	}
+
+	function executeIfHasField(target,name){
+		return doWhen(existy(target[name]),function(){
+			var result = undefined;			
+			if(typeof target[name] === 'function'){
+				result = target[name]();
+			}else{
+			 	result = _.result(target,name);
+			}
+			return result;	
+		});
+	}
+
+	console.log(executeIfHasField({ "foo" : 43 },"foo"));
+	console.log(executeIfHasField([12,34,56],"reverse"));
+	var obj = {
+		name : "Bhadhresh Shah",
+		getCall : function(){
+			return "This is a method call"
+		}
+	}
+	console.log(executeIfHasField(obj,"getCall"));
+	console.log(executeIfHasField(obj,"name"));	
+}
+fn06();
